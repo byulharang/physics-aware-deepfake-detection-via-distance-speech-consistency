@@ -1,3 +1,5 @@
+<div align="center">
+
 # Physics-Aware Deepfake Detection via Distance-Speech Consistency
 
 <div>
