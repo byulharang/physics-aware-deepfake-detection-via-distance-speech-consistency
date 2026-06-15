@@ -5,214 +5,237 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <title>Physics-Aware Deepfake Detection via Speech-Distance Consistency</title>
-  <meta name="title" content="Physics-Aware Deepfake Detection via Speech-Distance Consistency">
-  <meta name="description" content="A physics-aware deepfake detector for dynamic speaking videos leveraging acoustic distance cues.">
-  <meta name="keywords" content="deepfake detection, audio-visual learning, physical consistency, interspeech">
-  <meta name="author" content="Kyeongrae Kim, Kim Sung-Bin, Oh Hyun-Bin, Tae-Hyun Oh">
-  <meta name="robots" content="index, follow">
   
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="KAIST, POSTECH">
-  <meta property="og:title" content="Physics-Aware Deepfake Detection via Speech-Distance Consistency">
-  <meta property="og:description" content="A physics-aware deepfake detector leveraging speech-distance physical consistency.">
-  <meta property="og:url" content="https://byulharang.github.io/physics-aware-deepfake-detection-via-distance-speech-consistency/">
-  <meta property="og:image" content="static/images/og_banner.png">
-
-  <meta name="citation_title" content="Physics-Aware Deepfake Detection via Speech-Distance Consistency">
-  <meta name="citation_author" content="Kim, Kyeongrae">
-  <meta name="citation_author" content="Kim, Sung-Bin">
-  <meta name="citation_author" content="Oh, Hyun-Bin">
-  <meta name="citation_author" content="Oh, Tae-Hyun">
-  <meta name="citation_publication_date" content="2026">
-  <meta name="citation_journal_title" content="Interspeech">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
-  <script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "Physics-Aware Deepfake Detection via Speech-Distance Consistency",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "Kyeongrae Kim",
-        "affiliation": { "@type": "Organization", "name": "KAIST" }
-      },
-      {
-        "@type": "Person",
-        "name": "Kim Sung-Bin",
-        "affiliation": { "@type": "Organization", "name": "POSTECH" }
-      },
-      {
-        "@type": "Person",
-        "name": "Oh Hyun-Bin",
-        "affiliation": { "@type": "Organization", "name": "POSTECH" }
-      },
-      {
-        "@type": "Person",
-        "name": "Tae-Hyun Oh",
-        "affiliation": { "@type": "Organization", "name": "KAIST" }
-      }
-    ],
-    "datePublished": "2026-06-19",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Interspeech"
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fbfbfb;
+      color: #363636;
     }
-  }
-  </script>
+    .publication-title {
+      font-weight: 800;
+      font-size: 2.8rem !important;
+      line-height: 1.2;
+      margin-bottom: 25px;
+    }
+    .publication-authors {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+    .author-block {
+      margin-right: 12px;
+      display: inline-block;
+    }
+    .author-block a {
+      color: #3273dc;
+    }
+    .author-block a:hover {
+      text-decoration: underline;
+    }
+    .institution-block {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+    .conference-tag {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-top: 15px;
+    }
+    .publication-links {
+      margin-top: 25px;
+    }
+    .link-block {
+      margin: 6px;
+      display: inline-block;
+    }
+    .link-block .button {
+      padding: 0 24px;
+      height: 44px;
+      font-weight: 500;
+    }
+    .button.is-dark {
+      background-color: #1f2937 !important;
+      border-radius: 24px;
+      transition: background-color 0.2s;
+    }
+    .button.is-dark:hover {
+      background-color: #111827 !important;
+    }
+    .teaser-box {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    .section-title {
+      font-weight: 700 !important;
+      margin-bottom: 20px !important;
+    }
+    .content p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+    .hero.is-light {
+      background-color: #f3f4f6;
+    }
+    pre {
+      background-color: #1e1e1e;
+      color: #d4d4d4;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      text-align: left;
+    }
+    .footer {
+      background-color: #ffffff;
+      padding: 40px 0;
+      border-top: 1px solid #e5e7eb;
+    }
+  </style>
+
+  <script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
-  <main id="main-content">
-    
-    <section class="hero">
-      <div class="hero-body">
-        <div class="container is-max-desktop">
-          <div class="columns is-centered">
-            <div class="column has-text-centered">
-              <h1 class="title is-1 publication-title">Physics-Aware Deepfake Detection via Speech-Distance Consistency</h1>
-              
-              <div class="is-size-5 publication-authors">
-                <span class="author-block">Kyeongrae Kim<sup>1</sup>,</span>
-                <span class="author-block">Kim Sung-Bin<sup>2</sup>,</span>
-                <span class="author-block">Oh Hyun-Bin<sup>2</sup>,</span>
-                <span class="author-block">Tae-Hyun Oh<sup>1,$\dagger$</sup></span>
-              </div>
-
-              <div class="is-size-5 publication-authors">
-                <span class="author-block"><sup>1</sup>KAIST, <sup>2</sup>POSTECH</span><br>
-                <span class="is-size-4" style="font-weight: 600; color: #2563eb;">Interspeech 2026</span>
-                <span class="eql-cntrb"><small><br><sup>$\dagger$</sup>Corresponding Author</small></span>
-              </div>
-
-              <div class="column has-text-centered">
-                <div class="publication-links">
-                  <span class="link-block">
-                    <a href="https://arxiv.org/pdf/2410.13569" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                      <span>Paper</span>
-                    </a>
-                  </span>
-                  <span class="link-block">
-                    <a href="https://github.com/byulharang/physics-aware-deepfake-detection-via-distance-speech-consistency" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon"><i class="fab fa-github"></i></span>
-                      <span>Code</span>
-                    </a>
-                  </span>
-                  <span class="link-block">
-                    <a href="https://arxiv.org/abs/2410.13569" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon"><i class="ai ai-arxiv"></i></span>
-                      <span>arXiv</span>
-                    </a>
-                  </span>
-                  <span class="link-block">
-                    <a href="https://huggingface.co/" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon" style="vertical-align: middle; font-size: 20px;">&#129303;</span>
-                      <span>Dataset</span>
-                    </a>
-                  </span>     
-                </div>
-              </div>
-
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title publication-title">Physics-Aware Deepfake Detection via Speech-Distance Consistency</h1>
+            
+            <div class="publication-authors">
+              <span class="author-block">Kyeongrae Kim<sup>1</sup>,</span>
+              <span class="author-block">Kim Sung-Bin<sup>2</sup>,</span>
+              <span class="author-block">Oh Hyun-Bin<sup>2</sup>,</span>
+              <span class="author-block">Tae-Hyun Oh<sup>1,$\dagger$</sup></span>
             </div>
+
+            <div class="institution-block">
+              <span><sup>1</sup>KAIST, <sup>2</sup>POSTECH</span>
+            </div>
+            <div class="conference-tag">
+              <span>Interspeech 2026</span>
+            </div>
+            <div style="margin-top: 5px; color: #777;">
+              <small><sup>$\dagger$</sup>Corresponding Author</small>
+            </div>
+
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2410.13569" target="_blank" class="button is-dark is-rounded text-white">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/byulharang/physics-aware-deepfake-detection-via-distance-speech-consistency" target="_blank" class="button is-dark is-rounded text-white">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2410.13569" target="_blank" class="button is-dark is-rounded text-white">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/" target="_blank" class="button is-dark is-rounded text-white">
+                  <span class="icon" style="font-size: 18px; margin-right: 5px;">&#129303;</span>
+                  <span>Dataset</span>
+                </a>
+              </span>     
+            </div>
+
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="hero teaser">
-      <div class="container is-max-desktop">
-        <div class="hero-body has-text-centered">
-          <img src="static/images/teaser.png" alt="Teaser Image" class="blend-img-background center-image" style="max-width: 100%; height: auto;" onerror="this.style.display='none';">
-          <br><br>
-          <div class="content has-text-justified">
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body has-text-centered">
+        <div class="teaser-box">
+          <img src="static/images/teaser.png" alt="Teaser Image" style="max-width: 100%; height: auto; border-radius: 6px;" onerror="this.style.display='none';">
+          <div class="content has-text-justified" style="margin-top: 20px;">
             <p>
               Recent progress in generative models has made talking-head deepfakes highly realistic and easy to create, jeopardizing public trust. However, most audio-visual deepfake detectors rely on lip–speech synchronization and are designed for static, frontal videos, limiting their reliability in dynamic, in-the-wild recordings where the speaker moves and lip cues are degraded or missing.
             </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section hero is-light">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">Abstract</h2>
-            <div class="content has-text-justified">
-              <p>
-                Recent progress in generative models has made talking-head deepfakes highly realistic and easy to create, jeopardizing public trust. However, most audio-visual deepfake detectors rely on lip–speech synchronization and are designed for static, frontal videos, limiting their reliability in dynamic, in-the-wild recordings where the speaker moves and lip cues are degraded or missing. As an alternative, we propose a physics-aware detector for dynamic speaking videos that leverages an acoustic constraint: in real recordings, speech energy varies predictably with speaker-to-camera distance, whereas deepfake generation can break this coupling. Our method combines distance estimates from video with distance-dependent acoustic measures from speech to detect deepfakes. Experiments on in-the-wild benchmarks show that the proposed physical cue is effective in dynamic scenarios, and that it complements lip-sync-based detectors, with a simple ensemble achieving consistent gains across datasets.
-              </p>
-            </div>
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3 section-title">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Recent progress in generative models has made talking-head deepfakes highly realistic and easy to create, jeopardizing public trust. However, most audio-visual deepfake detectors rely on lip–speech synchronization and are designed for static, frontal videos, limiting their reliability in dynamic, in-the-wild recordings where the speaker moves and lip cues are degraded or missing. As an alternative, we propose a physics-aware detector for dynamic speaking videos that leverages an acoustic constraint: in real recordings, speech energy varies predictably with speaker-to-camera distance, whereas deepfake generation can break this coupling. Our method combines distance estimates from video with distance-dependent acoustic measures from speech to detect deepfakes. Experiments on in-the-wild benchmarks show that the proposed physical cue is effective in dynamic scenarios, and that it complements lip-sync-based detectors, with a simple ensemble achieving consistent gains across datasets.
+            </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section hero is-small">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column is-full">
-            <div class="content">
-              <h2 class="title is-3">Speech-Distance Physical Consistency</h2>
-              <p class="has-text-centered">
-                <img src="static/images/framework.png" alt="Methodology Framework" class="blend-img-background center-image" style="max-width: 100%; height: auto;" onerror="this.style.display='none';">
-              </p>
-              <p class="has-text-justified">
-                In authentic recordings, the speech signal obeys physical laws of acoustic attenuation. Specifically, the direct sound pressure inversely correlates with the distance between the speaker and the microphone. Our framework models this physical consistency by extracting visual depth/distance cues and aligning them with acoustic metrics such as Signal-to-Noise Ratio (SNR) and Clarity ($C_{50}$) to capture acoustic features. Deepfake models often fail to satisfy these multi-modal physical boundaries, allowing for robust out-of-domain detection.
-              </p>
-            </div>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="content">
+            <h2 class="title is-3 section-title has-text-centered">Speech-Distance Physical Consistency</h2>
+            
+            <p class="has-text-centered" style="margin: 30px 0;">
+              <img src="static/images/framework.png" alt="Methodology Framework" style="max-width: 100%; height: auto; border-radius: 8px;" onerror="this.style.display='none';">
+            </p>
+            
+            <p class="has-text-justified">
+              In authentic recordings, the speech signal obeys physical laws of acoustic attenuation. Specifically, the direct sound pressure inversely correlates with the distance between the speaker and the microphone. Our framework models this physical consistency by extracting visual depth/distance cues and aligning them with acoustic metrics such as Signal-to-Noise Ratio (SNR) and Clarity ($C_{50}$) to capture acoustic features. Deepfake models often fail to satisfy these multi-modal physical boundaries, allowing for robust out-of-domain detection.
+            </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section" id="BibTeX">
-      <div class="container is-max-desktop content">
-        <div class="bibtex-header" style="display: flex; justify-content: space-between; align-items: center;">
-          <h2 class="title">BibTeX</h2>
-        </div>
-        <pre id="bibtex-code"><code>@InProceedings{kim2026physics,
+  <section class="section hero is-light" id="BibTeX">
+    <div class="container is-max-desktop content has-text-centered">
+      <h2 class="title is-3 section-title">BibTeX</h2>
+      <div class="columns is-centered">
+        <div class="column is-10">
+          <pre><code>@InProceedings{kim2026physics,
   author    = {Kim, Kyeongrae and Kim, Sung-Bin and Oh, Hyun-Bin and Oh, Tae-Hyun},
   title     = {Physics-Aware Deepfake Detection via Speech-Distance Consistency},
   booktitle = {Proceedings of Interspeech},
   year      = {2026}
 }</code></pre>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="columns is-centered">
-          <div class="column is-8">
-            <div class="content has-text-centered">
-              <p>
-                This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
-              </p>
-            </div>
-          </div>
         </div>
       </div>
-    </footer>
+    </div>
+  </section>
 
-  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" style="color: #3273dc;">Academic Project Page Template</a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
